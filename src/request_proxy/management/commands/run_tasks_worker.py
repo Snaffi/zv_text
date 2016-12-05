@@ -21,7 +21,7 @@ class Command(BaseCommand):
                 'https://vast-eyrie-4711.herokuapp.com',
                 params={'key': key}
             )
-            print response.status_code, msg
+            
             if 200 <= response.status_code <= 299:
                 redis_client.set(
                     key,
