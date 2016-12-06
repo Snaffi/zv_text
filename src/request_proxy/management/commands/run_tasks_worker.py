@@ -9,8 +9,6 @@ from gevent.pool import Pool
 
 from redis_client import redis_client
 
-pool = Pool(1000)
-
 
 class Command(BaseCommand):
     
@@ -30,7 +28,8 @@ class Command(BaseCommand):
                 )
             else:
                 redis_client.delete(key)
-        
+
+        pool = Pool(settings.WORKER_CONCURRENCY)
         pubsub_obj = redis_client.pubsub()
         pubsub_obj.subscribe('zvooq_tasks')
         for message in pubsub_obj.listen():

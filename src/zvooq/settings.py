@@ -110,6 +110,7 @@ STATIC_URL = '/static/'
 
 CACHE_EXPIRATION = 60 * 60 * 24  # 24 hours
 KEY_SENTINEL = 'zvooq_sentinel'
+WORKER_CONCURRENCY = 1000
 
 REDIS_HOST = 'redis'
 REDIS_PORT = 6379
